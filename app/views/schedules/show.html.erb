@@ -1,0 +1,15 @@
+<div class="schedule-table-container">
+  <table class="schedule">
+    <tr class="header"></tr>
+  </table>
+</div>
+<ul class="contractors"></ul>
+
+<script>
+  App.init({
+    el: $('table.schedule'),
+    assignments: <%= assignments.to_json.html_safe %>,
+    contractors: <%= contractors.to_json(methods: 'gravatar_hash').html_safe %>,
+    projects: <%= projects.to_json.html_safe %>
+  })
+</script>

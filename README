@@ -1,0 +1,15 @@
+Gaslight Dashboard App
+======================
+
+Running the Tests
+-----------------
+
+The Cucumber specs use Poltergeist to hook Capybara with Phantom.js.  You should `brew install phantomjs` before trying to run the tests.
+
+Konacha is used to run Mocha JavaScript tests. To run these tests from the command line do `rake konacha:run`.  If you are running these tests repeated, startup the Konacha server with `rake konacha:serve` and hit localhost:3500 with a browser. This will run tests really fast.
+
+
+Storing API Keys
+----------------
+
+Developers can store API keys either in environment variables (used in production) or an optional config/keys.yml file. Keys from the keys.yml are available in `Config.keys.example_key_name`.

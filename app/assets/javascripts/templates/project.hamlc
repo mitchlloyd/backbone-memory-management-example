@@ -1,0 +1,7 @@
+%th.project-title
+  = @project.get('name')
+  %div.color-bar
+- index = 0
+- for week in @weeks
+  %td{data-week: week, data-index: index}
+  - index += 1

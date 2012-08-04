@@ -1,9 +1,31 @@
-@import foundation
+$fg-column: 60px
+$fg-gutter: 25px
+$fg-max-columns: 12
+$font-base: 14px
+
+@import compass/reset/utilities
+@import bourbon
 @import customizations
 @import schedule
 
-table.simple
-  +column(7, collapse)
+@include global-reset
+
+body
+  font-family: $helvetica
+  font-size: $font-base
+
+*
+  box-sizing: border-box
+
+h1
+  font-size: golden-ratio($font-base, 2)
+  margin-bottom: 1em
+  margin-top: 1em
+  color: #999
+
+.container
+  max-width: 1000px
+  margin: 0 auto
 
 .hidden
   display: none

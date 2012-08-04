@@ -3,38 +3,6 @@ $link-color: #369
 .header-row
   background-color: #eee
 
-header
-  @include outerRow
-  margin-bottom: 2em
-  height: 60px
-  h1
-    @include column(3)
-    margin-top: 0
-    margin-bottom: 0
-    img, a
-      height: 50px
-  div.nav-bar-container
-    @include column(9)
-  ul.nav-bar
-    margin-top: 0.75em
-    margin-bottom: 0.75em
-    float: right
-    background: transparent
-    border: none
-    li
-      vertical-align: center
-      border: none
-    a, span
-      padding: 0 !important
-      margin-left: 3em
-      color: $link-color
-  ul.nav-bar >
-    li:hover
-      background-color: transparent
-    li:last-child
-      border: none
-      margin-bottom: 0px
-
 .content table
   width: 100%
 

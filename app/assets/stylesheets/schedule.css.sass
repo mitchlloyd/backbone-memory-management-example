@@ -1,16 +1,18 @@
 $text-shadow-color: #f6f6f6
-$cell-width: 108px
-$cell-height: $cell-width / 2
+$cell-width: 100px
+$cell-height: 50px
+$contractor-list-width: 5%
 
 div.schedule-table-container
-  @include column(12)
-  width: 1000px - $cell-width / 2
+  width: 100% - flex-gutter() - $contractor-list-width
+  margin-right: flex-gutter()
+  float: left
 
 table.schedule
   table-layout: fixed
   width: 100%
-  border: none
-  border-collapse: collapse
+  border-collapse: separate
+
   *
     font-size: 13px
   td
@@ -44,6 +46,7 @@ th.project div
 
 th.date
   width: $cell-width
+  text-align: center
   div
     position: relative
     background-color: #84e4dd
@@ -67,18 +70,20 @@ th.project-title
   position: relative
   padding-left: 0.75em
   padding-right: 0.75em
-  height: $cell-height + 1 // +1 for the borders
+  height: $cell-height // + 1 // +1 for the borders
   color: #919191
   text-shadow: 0px 1px #fff
   background-color: #fbfafa
 
 ul.contractors
+  width: $contractor-list-width
   list-style: none
   float: left
+  @include clearfix
 
 div.assignment, li.contractor, li.need
   padding: 5px
-  width: $cell-width / 2
+  width: $cell-height
   height: $cell-height
   img
     @include border-radius(3px)
@@ -192,7 +197,7 @@ div.benched-contractor
   span
     @extend .overflow-ellipsis
     display: inline-block
-    max-width: $cell-width - 18px
+    max-width: $cell-width - 12px
   a.hide-contractor, a.show-contractor
     display: inline-block
     position: absolute

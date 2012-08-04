@@ -11,7 +11,7 @@ gem 'chronic'
 gem 'yajl-ruby'
 gem 'compass-rails', '~> 1.0.3'
 gem 'sass-rails', "  ~> 3.2.3"
-gem "zurb-foundation", "~> 3.0.6"
+gem 'bourbon'
 gem 'haml_coffee_assets'
 
 group :development, :test do

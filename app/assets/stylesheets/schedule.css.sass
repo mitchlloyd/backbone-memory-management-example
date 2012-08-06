@@ -17,6 +17,8 @@ table.schedule
     font-size: 13px
   td
     padding: 0
+    text-align: left
+    vertical-align: top
   tr.header div
     margin-bottom: 1em
   tr.project
@@ -82,7 +84,7 @@ ul.contractors
   @include clearfix
 
 div.assignment, li.contractor, li.need
-  padding: 5px
+  padding: 3px
   width: $cell-height
   height: $cell-height
   img
@@ -98,13 +100,14 @@ div.assignment, li.contractor, li.need
     color: white
     font-weight: 500
     position: absolute
-    bottom: 5px
-    right: 5px
+    bottom: 3px
+    right: 3px
     background-color: rgba(0,0,0,0.3)
     text-align: right
     padding: 0px 3px
     font-size: 12px
     line-height: 1.1
+    @include border-bottom-right-radius(3px)
 
 div.assignment
   height: $cell-height

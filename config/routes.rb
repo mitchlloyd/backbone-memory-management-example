@@ -1,4 +1,5 @@
 Dashboard::Application.routes.draw do
-  resources :assignments, only: 'create'
+  resources :assignments
+  resources :contractors
   root :to => 'schedules#show'
 end

@@ -1,0 +1,229 @@
+$text-shadow-color: #f6f6f6
+$cell-width: 100px
+$cell-height: 50px
+$contractor-list-width: 5%
+
+div.schedule-table-container
+  width: 100% - flex-gutter() - $contractor-list-width
+  margin-right: flex-gutter()
+  float: left
+
+table.schedule
+  table-layout: fixed
+  width: 100%
+  border-collapse: separate
+
+  *
+    font-size: 13px
+  td
+    padding: 0
+    text-align: left
+    vertical-align: top
+  tr.header div
+    margin-bottom: 1em
+  tr.project
+    border-bottom: 1px solid #dedede
+    &:last-child
+      border: none
+  td:nth-child(even)
+    background-color: white
+  td:nth-child(odd)
+    background-color: #fbfafa
+  th:nth-child(2) div
+    @include border-left-radius(10px)
+  th:last-child div
+    @include border-right-radius(10px)
+  tr.project:nth-child(2)
+    th
+      @include border-top-left-radius(10px)
+    td:last-child
+      @include border-top-right-radius(10px)
+
+th.project div
+  text-align: center
+  color: #bf9437
+  text-shadow: 0px 1px $text-shadow-color
+  padding-right: 10px
+  padding-left: 10px
+
+th.date
+  width: $cell-width
+  text-align: center
+  div
+    position: relative
+    background-color: #84e4dd
+    color: #6caea8
+    text-shadow: 0px 1px $text-shadow-color
+    padding: 5px
+
+#left-arrow, #right-arrow
+  top: 2px
+  position: absolute
+
+#left-arrow
+  left: 0
+
+#right-arrow
+  right: 0
+
+th.project-title
+  @extend .overflow-ellipsis
+  text-align: left
+  position: relative
+  padding-left: 0.75em
+  padding-right: 0.75em
+  height: $cell-height + 1 // +1 for the borders
+  color: #919191
+  text-shadow: 0px 1px #fff
+  background-color: #fbfafa
+
+ul.contractors
+  width: $contractor-list-width
+  list-style: none
+  float: left
+  @include clearfix
+
+div.assignment, li.contractor, li.need
+  padding: 3px
+  width: $cell-height
+  height: $cell-height
+  img
+    @include border-radius(3px)
+
+.overflow-ellipsis
+  white-space: nowrap
+  text-overflow: ellipsis
+  overflow: hidden
+
+div.assignment, li.contractor, li.need
+  span.name
+    color: white
+    font-weight: 500
+    position: absolute
+    bottom: 3px
+    right: 3px
+    background-color: rgba(0,0,0,0.3)
+    text-align: right
+    padding: 0px 3px
+    font-size: 12px
+    line-height: 1.1
+    @include border-bottom-right-radius(3px)
+
+div.assignment
+  height: $cell-height
+  position: relative
+  background-color: red
+  color: white
+  cursor: move
+  $top-color: #4e7ed1
+  $bottom-color: darken($top-color, 10)
+  @include background(linear-gradient(top, $top-color, $bottom-color))
+  display: inline-block
+  a
+    display: block
+    color: white
+    background-color: rgba(0,0,0,0.4)
+    font-weight: bold
+    font-size: 17px
+    position: absolute
+    padding: 2px
+    padding-bottom: 6px
+    top: -1px
+    right: -1px
+    line-height: 0.42
+  img.blank
+    visibility: hidden
+
+li.contractor, li.need
+  @extend .overflow-ellipsis
+  @include border-radius(3px)
+  cursor: move
+  border: 1px solid #efefef
+  margin-bottom: 5px
+  $top-color: lighten(#4e7ed1, 39)
+  $bottom-color: darken($top-color, 4)
+  @include background(linear-gradient(top, $top-color, $bottom-color))
+
+// Project Colors
+
+@mixin project-colors($n, $color)
+  &:nth-child(7n+#{$n})
+    th.project-title .color-bar
+      right: 0px
+      top: 0px
+      position: absolute
+      width: 5px
+      height: $cell-height
+      background-color: $color
+    div.assignment
+      background-color: $color
+      $top-color: $color
+      $bottom-color: darken($top-color, 7)
+      @include background(linear-gradient(top, $top-color, $bottom-color))
+      border: 1px solid darken($color, 14)
+
+tr.project
+  @include project-colors(2, #f19ccc)
+  @include project-colors(3, #69CA79)
+  @include project-colors(4, #f2e51b)
+  @include project-colors(5, #f2761b)
+  @include project-colors(6, #1bccf2)
+  @include project-colors(7, #d588f5)
+  @include project-colors(8, #88eff5)
+
+// The Bench
+
+tr.bench
+  border: none
+  .hide, .show
+    font-weight: 300
+  .hide
+    display: none
+  td
+    background-color: #fbfafa !important
+    opacity: 0.7
+
+tr.bench.show-all
+  .benched-contractor.hidden
+    display: inline-block
+  .show
+    display: none
+  .hide
+    display: inline-block
+
+div.benched-contractor
+  display: inline-block
+  padding-right: 11px
+  position: relative
+  font-style: italic
+  margin-top: 5px
+  span
+    @extend .overflow-ellipsis
+    display: inline-block
+    max-width: $cell-width - 12px
+  a.hide-contractor, a.show-contractor
+    display: inline-block
+    position: absolute
+    visibility: hidden
+    top: -6px
+    right: -3px
+    padding: 3px
+    font-size: 16px
+    font-weight: bold
+    color: #F30089
+    line-height: 1
+  &:hover a.hide-contractor
+    visibility: visible
+  &:last-child
+    border: none
+    margin: none
+
+div.benched-contractor.hidden
+  display: none
+  color: #999
+  background: white
+  opacity: 1
+  a.hide-contractor
+    visibility: hidden
+  a.show-contractor
+    visibility: visible

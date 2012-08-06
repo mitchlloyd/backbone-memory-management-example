@@ -1,0 +1,13 @@
+.bundle
+config/database.yml
+db/*.sqlite3
+config/database.yml
+config/keys.yml
+log/*.log
+tmp/
+.sass-cache/
+vendor/ruby
+.redcar
+.rvmrc
+bin
+config/database.yml

@@ -1,4 +1,4 @@
-class App.Views.Bench extends App.Views.Base
+class App.Views.Bench extends Backbone.View
   tagName: 'tr'
   className: 'bench'
 
@@ -9,7 +9,6 @@ class App.Views.Bench extends App.Views.Base
     @weeks = options.weeks
     @benchedContractorViews = []
     App.assignments.on 'add remove change', @render
-    App.timeline.on 'shift', @handleTimelineShift
 
   render: =>
     @$el.html """
@@ -26,7 +25,6 @@ class App.Views.Bench extends App.Views.Base
 
   renderAllBenchedContractors: ->
     @$('td').remove()
-    @disposeViews()
     @renderBenchedContractorsForWeek(week) for week in @weeks
 
   renderBenchedContractorsForWeek: (week) ->
@@ -42,10 +40,6 @@ class App.Views.Bench extends App.Views.Base
 
   toggleShowAll: =>
     @$el.toggleClass('show-all')
-
-  disposeViews: ->
-    view.dispose() for view in @benchedContractorViews
-    @benchedContractorViews = []
 
   handleTimelineShift: (weeks) =>
     @weeks = weeks

@@ -8,7 +8,7 @@
   {name: 'Olympic Website'},
   {name: 'Mars Rover AI'}
 ].each do |project_data|
-  unless Project.find_by_name(project_data[:email])
+  unless Project.find_by_name(project_data[:name])
     Project.create!(
       name: project_data[:name],
       display: true,

@@ -1,4 +1,4 @@
-class App.Views.Schedule extends App.Views.Base
+class App.Views.Schedule extends Backbone.View
   events:
     "click #left-arrow": "handleTimelineShiftIntentLeft"
     "click #right-arrow": "handleTimelineShiftIntentRight"
@@ -10,6 +10,7 @@ class App.Views.Schedule extends App.Views.Base
     @benchView = new App.Views.Bench(weeks: @weeks)
 
   render: =>
+    @$el.empty()
     @renderHeader()
     @renderProjects()
     @renderBench()
@@ -25,22 +26,15 @@ class App.Views.Schedule extends App.Views.Base
 
   renderHeader: =>
     formattedWeeks = (week.format("M/D") for week in @weeks)
-    @$('tr.header').html JST['schedule_header'](weeks: formattedWeeks)
+    @$el.html JST['schedule_header'](weeks: formattedWeeks)
 
   renderContractors: =>
-    @disposeContractors()
-
-    @contractorViews.push (new App.Views.Need)
+    $('ul.contractors').empty()
+    $('ul.contractors').append (new App.Views.Need).render().el
 
     for contractor in App.contractors.models
       view = new App.Views.Contractor(model: contractor)
-      @contractorViews.push view
-
-    $('ul.contractors').append view.render().el for view in @contractorViews
-
-  disposeContractors: ->
-    view.dispose() for view in @contractorViews
-    @contractorViews = []
+      $('ul.contractors').append view.render().el
 
   renderBench: ->
     @benchView.weeks = @weeks
@@ -53,9 +47,11 @@ class App.Views.Schedule extends App.Views.Base
 
   handleTimelineShiftIntentLeft: ->
     App.timeline.shift(-1)
+    @render()
 
   handleTimelineShiftIntentRight: ->
     App.timeline.shift(1)
+    @render()
 
   handleTimelineShift: (weeks) =>
     @weeks = weeks

@@ -1,10 +1,11 @@
-%th.project
-  %div PROJECT
-- for week in @weeks
-  %th.date
-    %div
-      - if week is @weeks[0]
-        %img#left-arrow{src: "/assets/leftArrow.png"}
-      - if week is @weeks[@weeks.length - 1]
-        %img#right-arrow{src: "/assets/rightArrow.png"}
-      = week
+%tr.header
+  %th.project
+    %div PROJECT
+  - for week in @weeks
+    %th.date
+      %div
+        - if week is @weeks[0]
+          %img#left-arrow{src: "/assets/leftArrow.png"}
+        - if week is @weeks[@weeks.length - 1]
+          %img#right-arrow{src: "/assets/rightArrow.png"}
+        = week

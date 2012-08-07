@@ -1,11 +1,11 @@
 #= require views/helpers
 
-class App.Views.Contractor extends App.Views.Base
+class App.Views.Contractor extends Backbone.View
   tagName: 'li'
   className: 'contractor'
 
   initialize: ->
-    @bindTo @model, 'change:display', @toggleVisibility
+    @model.on 'change:display', @toggleVisibility
     @$el.data('backbone-view', this)
     @$el.draggable(revert: true, revertDuration: 1)
     @$el.attr('data-id', @model.id)

@@ -5,9 +5,7 @@ class App.Views.Project extends Backbone.View
 
   initialize: (options) ->
     @weeks = options.weeks
-    @assignmentViews = []
     App.assignments.on 'add change:week change:project_id', @renderAssignments
-    App.timeline.on 'shift', @handleTimelineShift
 
   render: =>
     @$el.html @template(project: @model, weeks: @weeks)
@@ -64,10 +62,8 @@ class App.Views.Project extends Backbone.View
     for week in @weeks
       for assignment in @model.assignmentsForWeek(week)
         assignmentView = new App.Views.Assignment(model: assignment)
-        @assignmentViews.push assignmentView
         $(@$('td')[index]).append assignmentView.render().el
       index = index + 1
 
   clearAssignments: =>
-    view.dispose() for view in @assignmentViews
-
+    @$('td').empty()

@@ -6,7 +6,6 @@ class App.Views.Schedule extends Backbone.View
   initialize: ->
     App.timeline.on 'shift', @handleTimelineShift
     @weeks = App.timeline.weeks()
-    @contractorViews = []
     @benchView = new App.Views.Bench(weeks: @weeks)
 
   render: =>

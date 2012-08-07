@@ -1,9 +1,23 @@
-# Create a project that can be used to assign contractors
-# who are "out" on vacation or for another reason.
-unless Project.find_by_name('Out')
-  Project.create(name: 'Out', display: true, virtual: true)
+# See data for projects
+[
+  {name: 'Out', virtual: true},
+  {name: 'Rails'},
+  {name: 'IBM Enterprise Thing'},
+  {name: 'Next Version of iOS'},
+  {name: 'Cold Fusion'},
+  {name: 'Olympic Website'},
+  {name: 'Mars Rover AI'}
+].each do |project_data|
+  unless Project.find_by_name(project_data[:email])
+    Project.create!(
+      name: project_data[:name],
+      display: true,
+    )
+  end
 end
 
+
+# Seed data for contractors
 [
    {name: 'Mitch Lloyd', email: 'mitch.lloyd@gmail.com'},
    {name: 'David Hanson', email: 'david@loudthinking.com'},

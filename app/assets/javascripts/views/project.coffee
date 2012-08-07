@@ -4,6 +4,7 @@ class App.Views.Project extends Backbone.View
   template: JST['project']
 
   initialize: (options) ->
+    @assignmentViews = []
     @weeks = options.weeks
     App.assignments.on 'add change:week change:project_id', @renderAssignments
 

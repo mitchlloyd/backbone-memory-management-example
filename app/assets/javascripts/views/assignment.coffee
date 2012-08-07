@@ -1,6 +1,6 @@
 #= require views/helpers
 
-class App.Views.Assignment extends Backbone.View
+class App.Views.Assignment extends App.Views.Base
   tagName: 'div'
   className: 'assignment'
 

@@ -1,4 +1,4 @@
-class App.Views.BenchedContractor extends Backbone.View
+class App.Views.BenchedContractor extends App.Views.Base
   tagName: 'div'
   className: 'benched-contractor'
 
@@ -7,7 +7,7 @@ class App.Views.BenchedContractor extends Backbone.View
     "click a.show-contractor": "handleShowContractorClick"
 
   initialize: ->
-    @model.on 'change:display', @toggleVisibility
+    @bindTo @model, 'change:display', @toggleVisibility
 
   render: ->
     @$el.html """

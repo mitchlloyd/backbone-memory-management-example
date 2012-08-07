@@ -13,4 +13,5 @@
 #= require moment
 #= require app
 #= require_directory ./models
+#= require views/base
 #= require_tree .

@@ -46,12 +46,10 @@ class App.Views.Schedule extends Backbone.View
 
   handleTimelineShiftIntentLeft: ->
     App.timeline.shift(-1)
-    @render()
 
   handleTimelineShiftIntentRight: ->
     App.timeline.shift(1)
-    @render()
 
   handleTimelineShift: (weeks) =>
     @weeks = weeks
-    @renderHeader()
+    @render()

@@ -68,4 +68,4 @@ class App.Views.Project extends Backbone.View
       index = index + 1
 
   clearAssignments: =>
-    view.dispose for view in @assignmentViews
+    view.dispose() for view in @assignmentViews

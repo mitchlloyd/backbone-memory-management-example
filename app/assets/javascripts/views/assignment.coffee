@@ -8,7 +8,7 @@ class App.Views.Assignment extends App.Views.Base
     "click .delete": "destroy"
 
   initialize: ->
-    @model.on 'destroy', => @remove()
+    @bindTo @model, 'destroy', => @remove()
     @$el.data('backbone-view', this)
     @$el.draggable(revert: true, revertDuration: 1)
     @$el.attr('data-id', @model.id)

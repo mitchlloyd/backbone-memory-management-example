@@ -19,7 +19,7 @@ class App.Views.Schedule extends App.Views.Base
     projects = App.projects.models
 
     for project in projects
-      projectView = new App.Views.Project(model: project, weeks: @weeks)
+      projectView = new App.Views.Project(model: project, timeline: App.timeline)
       @$el.append projectView.render().el
       projectView.on 'drop', @handleDrop
 

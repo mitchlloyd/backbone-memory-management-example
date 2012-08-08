@@ -4,10 +4,11 @@ class App.Views.Project extends Backbone.View
   template: JST['project']
 
   initialize: (options) ->
-    @weeks = options.weeks
+    @timeline = options.timeline
+    @timeline.on 'shift', @handleTimelineShift
+    @weeks = @timeline.weeks()
     @assignmentViews = []
     App.assignments.on 'add change:week change:project_id', @renderAssignments
-    App.timeline.on 'shift', @handleTimelineShift
 
   render: =>
     @$el.html @template(project: @model, weeks: @weeks)

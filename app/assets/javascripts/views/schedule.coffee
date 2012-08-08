@@ -29,12 +29,18 @@ class App.Views.Schedule extends Backbone.View
     @$el.html JST['schedule_header'](weeks: formattedWeeks)
 
   renderContractors: =>
-    $('ul.contractors').empty()
-    $('ul.contractors').append (new App.Views.Need).render().el
+    @disposeContractors()
+    @contractorViews.push (new App.Views.Need)
 
     for contractor in App.contractors.models
-      view = new App.Views.Contractor(model: contractor)
+      @contractorViews.push (new App.Views.Contractor(model: contractor))
+
+    for view in @contractorViews
       $('ul.contractors').append view.render().el
+
+  disposeContractors: ->
+    view.dispose() for view in @contractorViews
+    @contractorViews = []
 
   renderBench: ->
     @benchView.weeks = @weeks

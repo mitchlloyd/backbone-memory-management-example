@@ -5,7 +5,7 @@ class App.Views.Contractor extends App.Views.Base
   className: 'contractor'
 
   initialize: ->
-    bindOn @model, 'change:display', @toggleVisibility
+    @bindTo @model, 'change:display', @toggleVisibility
     @$el.data('backbone-view', this)
     @$el.draggable(revert: true, revertDuration: 1)
     @$el.attr('data-id', @model.id)

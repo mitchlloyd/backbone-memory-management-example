@@ -1,4 +1,4 @@
-class App.Views.Need extends Backbone.View
+class App.Views.Need extends App.Views.Base
   tagName: 'li'
   className: 'need'
 

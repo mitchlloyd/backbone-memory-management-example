@@ -63,8 +63,9 @@ class App.Views.Project extends Backbone.View
     for week in @weeks
       for assignment in @model.assignmentsForWeek(week)
         assignmentView = new App.Views.Assignment(model: assignment)
+        @assignmentViews.push assignmentView
         $(@$('td')[index]).append assignmentView.render().el
       index = index + 1
 
   clearAssignments: =>
-    @$('td').empty()
+    view.dispose for view in @assignmentViews

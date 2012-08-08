@@ -60,8 +60,8 @@ class App.Views.Project extends Backbone.View
     @weeks[index].format("YYYY-MM-DD")
 
   renderAssignments: =>
-    index = 0
     @clearAssignments()
+    index = 0
     for week in @weeks
       for assignment in @model.assignmentsForWeek(week)
         assignmentView = new App.Views.Assignment(model: assignment)
@@ -71,4 +71,5 @@ class App.Views.Project extends Backbone.View
 
   clearAssignments: =>
     view.dispose() for view in @assignmentViews
+    @assignmentViews = []
 

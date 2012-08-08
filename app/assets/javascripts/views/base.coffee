@@ -1,3 +1,5 @@
+# Based on http://stackoverflow.com/a/7607853/492254
+
 class App.Views.Base extends Backbone.View
   bindTo: (model, event, callback) ->
     @bindings or= []

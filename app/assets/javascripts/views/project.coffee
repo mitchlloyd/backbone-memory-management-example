@@ -69,3 +69,4 @@ class App.Views.Project extends Backbone.View
 
   clearAssignments: =>
     view.dispose() for view in @assignmentViews
+    @assignmentViews = []
